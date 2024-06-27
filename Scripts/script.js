@@ -31,12 +31,20 @@ document.addEventListener('DOMContentLoaded', function() {
     function createTaskElement(name, dueDate, assignee) {
         const taskElement = document.createElement('div');
         taskElement.classList.add('task');
-        taskElement.innerHTML = `
+        
+        let taskHTML = `
             <h3>${name}</h3>
             <p><strong>Due:</strong> ${formatDate(dueDate)}</p>
-            <p><strong>Assignee:</strong> ${assignee}</p>
-            <button class="delete-btn">Delete</button>
         `;
+
+        // Include assignee only if provided
+        if (assignee) {
+            taskHTML += `<p><strong>Assignee:</strong> ${assignee}</p>`;
+        }
+
+        taskHTML += `<button class="delete-btn">Delete</button>`;
+
+        taskElement.innerHTML = taskHTML;
 
         // Add delete functionality
         const deleteBtn = taskElement.querySelector('.delete-btn');
