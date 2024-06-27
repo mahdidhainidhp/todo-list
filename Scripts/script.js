@@ -54,4 +54,18 @@ document.addEventListener('DOMContentLoaded', function() {
         return date.toLocaleString();
     }
 
+    // Drop functionality (moving tasks to completed)
+    completedTasks.addEventListener('dragover', function(event) {
+        event.preventDefault();
+    });
+
+    completedTasks.addEventListener('drop', function(event) {
+        event.preventDefault();
+        const draggedTask = document.querySelector('.dragging');
+        if (draggedTask) {
+            draggedTask.classList.remove('dragging');
+            draggedTask.classList.add('completed');
+            completedTasks.appendChild(draggedTask);
+        }
+    });
 });
