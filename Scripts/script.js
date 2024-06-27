@@ -27,4 +27,31 @@ document.addEventListener('DOMContentLoaded', function() {
         // Clear form
         taskForm.reset();
     });
+
+    function createTaskElement(name, dueDate, assignee) {
+        const taskElement = document.createElement('div');
+        taskElement.classList.add('task');
+        taskElement.innerHTML = `
+            <h3>${name}</h3>
+            <p><strong>Due:</strong> ${formatDate(dueDate)}</p>
+            <p><strong>Assignee:</strong> ${assignee}</p>
+        `;
+
+        // Add draggable event
+        taskElement.setAttribute('draggable', true);
+        taskElement.addEventListener('dragstart', function() {
+            taskElement.classList.add('dragging');
+        });
+        taskElement.addEventListener('dragend', function() {
+            taskElement.classList.remove('dragging');
+        });
+
+        return taskElement;
+    }
+
+    function formatDate(dateTimeString) {
+        const date = new Date(dateTimeString);
+        return date.toLocaleString();
+    }
+
 });
