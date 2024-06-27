@@ -85,6 +85,8 @@ form button:hover {
     margin-bottom: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     cursor: grab;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: relative;
 }
 
 .task:hover {
@@ -112,6 +114,24 @@ form button:hover {
 
 .task p {
     margin: 5px 0;
+}
+
+.task .delete-btn {
+    display: block;
+    width: 100%;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.task .delete-btn:hover {
+    background-color: #c82333;
 }
 
 @media (max-width: 768px) {
