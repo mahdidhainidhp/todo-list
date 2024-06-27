@@ -68,4 +68,20 @@ document.addEventListener('DOMContentLoaded', function() {
             completedTasks.appendChild(draggedTask);
         }
     });
+
+    // Drop functionality (moving tasks from past due to completed)
+    pastDueTasks.addEventListener('dragover', function(event) {
+        event.preventDefault();
+    });
+
+    pastDueTasks.addEventListener('drop', function(event) {
+        event.preventDefault();
+        const draggedTask = document.querySelector('.dragging');
+        if (draggedTask) {
+            draggedTask.classList.remove('dragging');
+            draggedTask.classList.remove('past-due'); // Remove past-due class
+            draggedTask.classList.add('completed');
+            completedTasks.appendChild(draggedTask);
+        }
+    });
 });
