@@ -35,8 +35,15 @@ document.addEventListener('DOMContentLoaded', function() {
             <h3>${name}</h3>
             <p><strong>Due:</strong> ${formatDate(dueDate)}</p>
             <p><strong>Assignee:</strong> ${assignee}</p>
+            <button class="delete-btn">Delete</button>
         `;
 
+        // Add delete functionality
+        const deleteBtn = taskElement.querySelector('.delete-btn');
+        deleteBtn.addEventListener('click', function() {
+            taskElement.remove();
+        });
+        
         // Add draggable event
         taskElement.setAttribute('draggable', true);
         taskElement.addEventListener('dragstart', function() {
